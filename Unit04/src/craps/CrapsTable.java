@@ -21,8 +21,8 @@ public class CrapsTable extends JPanel
         setBorder(new LineBorder(Color.ORANGE.darker(), 3));
         display = displ;
         game = new CrapsGame();
-        die1 = new RollingDie();
-        die2 = new RollingDie();
+        die1 = new RollingDie(16);
+        die2 = new RollingDie(64);
         clock = new Timer(delay, this);
     }
 

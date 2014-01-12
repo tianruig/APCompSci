@@ -10,7 +10,7 @@ public class RollingDie extends Die {
             speedFactor = 0.04,
             speedLimit = 2.0;
     private static int tableLeft, tableRight, tableTop, tableBottom;
-    private final int dieSize = 24;
+    private final int dieSize;
     private int xCenter, yCenter;
     private double xSpeed, ySpeed;
 
@@ -23,9 +23,10 @@ public class RollingDie extends Die {
     }
 
     // Constructor: sets this die "off the table"
-    public RollingDie() {
+    public RollingDie(int size) {
         xCenter = -1;
         yCenter = -1;
+        dieSize = size;
     }
 
     // Starts this die rolling
@@ -53,8 +54,9 @@ public class RollingDie extends Die {
             return;
         }
 
-        while (Math.abs(xCenter - other.xCenter) < dieSize
-                && Math.abs(yCenter - other.yCenter) < dieSize) {
+        double avgSize = (this.dieSize + other.dieSize) / 2;
+        while (Math.abs(xCenter - other.xCenter) < avgSize
+                && Math.abs(yCenter - other.yCenter) < avgSize) {
             move();
         }
     }
